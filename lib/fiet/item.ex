@@ -4,7 +4,7 @@ defmodule Fiet.Item do
           title: binary | nil,
           description: binary | nil,
           published_at: binary | nil,
-          link: binary | nil
+          links: list(Fiet.Link.t())
         }
 
   defstruct [
@@ -12,6 +12,6 @@ defmodule Fiet.Item do
     :title,
     :description,
     :published_at,
-    :link
+    :links
   ]
 end

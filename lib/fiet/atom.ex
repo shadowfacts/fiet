@@ -319,8 +319,12 @@ defmodule Fiet.Atom do
   def handle_event(:end_element, {"link", _, _} = element, [{"entry", _, _} | _], feed) do
     %{entries: [entry | entries]} = feed
 
+    existing_links = case Map.get(entry, :links) do
+      nil -> []
+      existing -> existing
+    end
     link = Atom.Link.from_element(element)
-    entry = Map.put(entry, :link, link)
+    entry = Map.put(entry, :links, [link | existing_links])
 
     %{feed | entries: [entry | entries]}
   end
