@@ -57,7 +57,7 @@ defmodule Fiet.Feed do
 
     %__MODULE__{
       title: title,
-      link: link,
+      link: %Link{href: link},
       description: description,
       updated_at: last_build_date,
       categories: map_categories(categories),
